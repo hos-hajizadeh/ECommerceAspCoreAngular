@@ -8,9 +8,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E6F400FA-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentations", "Presentations", "{757F5BE6-961E-496B-8BE7-11EB796BB624}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Share", "Core\ECommerce.Share\ECommerce.Share.csproj", "{09BBC679-DF3F-47D8-8787-DEFB65AD204B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Basket", "Basket\ECommerce.Basket\ECommerce.Basket.csproj", "{E39EB313-0926-48EE-AD72-B2063B77ABF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{09BBC679-DF3F-47D8-8787-DEFB65AD204B} = {E6F400FA-041A-43EB-B91D-EB65494E1117}
+		{E39EB313-0926-48EE-AD72-B2063B77ABF2} = {B2686CCF-B637-4BB2-B8C6-72713052F3D6}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E39EB313-0926-48EE-AD72-B2063B77ABF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E39EB313-0926-48EE-AD72-B2063B77ABF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E39EB313-0926-48EE-AD72-B2063B77ABF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E39EB313-0926-48EE-AD72-B2063B77ABF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
