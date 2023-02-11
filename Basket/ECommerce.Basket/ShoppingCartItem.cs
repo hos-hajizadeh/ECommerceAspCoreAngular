@@ -1,6 +1,8 @@
-﻿namespace ECommerce.Basket;
+﻿using ECommerce.Share.Abstractions;
 
-public class ShoppingCartItem
+namespace ECommerce.Basket;
+
+public class ShoppingCartItem: ISnapshot<ShoppingCartItemSnapshot>
 {
     private readonly long _productId;
     private int _quantity;
@@ -23,4 +25,6 @@ public class ShoppingCartItem
     internal bool IsEqualsProduct(long productId) => _productId == productId;
 
     internal bool IsEqualsProduct(ShoppingCartItem cartItem) => _productId == cartItem._productId;
+    
+    public ShoppingCartItemSnapshot TakeSnapshot() => new(_productId, _quantity);
 }
