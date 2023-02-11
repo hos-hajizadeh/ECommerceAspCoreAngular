@@ -1,6 +1,8 @@
-﻿namespace ECommerce.Basket;
+﻿using ECommerce.Share.Abstractions;
 
-public class ShoppingCart
+namespace ECommerce.Basket;
+
+public class ShoppingCart : ISnapshot<ShoppingCartSnapshot>
 {
     private readonly long _userId;
     private readonly HashSet<ShoppingCartItem> _items = new();
@@ -40,5 +42,10 @@ public class ShoppingCart
     public int? GetProductQuantity(long productId)
     {
         return _items.FirstOrDefault(c => c.IsEqualsProduct(productId))?.Quantity;
+    }
+    
+    public ShoppingCartSnapshot TakeSnapshot()
+    {
+        return new ShoppingCartSnapshot(_userId, _items.Select(item => item.TakeSnapshot()));
     }
 }
