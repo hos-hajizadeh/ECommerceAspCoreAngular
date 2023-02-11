@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Basket.Test", "Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Basket.Application", "Basket\ECommerce.Basket.Application\ECommerce.Basket.Application.csproj", "{5247B9C3-8130-43E0-9FCE-159E651F4680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Basket.Data", "Basket\ECommerce.Basket.Data\ECommerce.Basket.Data.csproj", "{76993234-E5AF-431F-B0AC-4F6EE8FA213F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,7 @@ Global
 		{E39EB313-0926-48EE-AD72-B2063B77ABF2} = {B2686CCF-B637-4BB2-B8C6-72713052F3D6}
 		{FE477BDD-4588-4A64-91D0-E03FF2B67421} = {D12DD96A-DCE4-4633-BCF1-B5FB81659B7A}
 		{5247B9C3-8130-43E0-9FCE-159E651F4680} = {B2686CCF-B637-4BB2-B8C6-72713052F3D6}
+		{76993234-E5AF-431F-B0AC-4F6EE8FA213F} = {B2686CCF-B637-4BB2-B8C6-72713052F3D6}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -46,5 +49,9 @@ Global
 		{5247B9C3-8130-43E0-9FCE-159E651F4680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5247B9C3-8130-43E0-9FCE-159E651F4680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5247B9C3-8130-43E0-9FCE-159E651F4680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76993234-E5AF-431F-B0AC-4F6EE8FA213F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76993234-E5AF-431F-B0AC-4F6EE8FA213F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76993234-E5AF-431F-B0AC-4F6EE8FA213F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76993234-E5AF-431F-B0AC-4F6EE8FA213F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
