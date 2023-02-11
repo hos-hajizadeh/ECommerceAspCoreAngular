@@ -25,4 +25,9 @@
       <ProjectReference Include="..\..\Basket\ECommerce.Basket\ECommerce.Basket.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Applications" />
+      <Folder Include="Datas" />
+    </ItemGroup>
+
 </Project>

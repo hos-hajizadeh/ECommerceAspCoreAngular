@@ -1,4 +1,4 @@
-namespace ECommerce.Basket.Test;
+namespace ECommerce.Basket.Test.Domains;
 
 public class ShoppingCartTest
 {
