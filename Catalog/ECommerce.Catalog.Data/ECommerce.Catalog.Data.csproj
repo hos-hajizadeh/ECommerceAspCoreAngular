@@ -17,6 +17,7 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\..\Core\ECommerce.Share\ECommerce.Share.csproj" />
+      <ProjectReference Include="..\ECommerce.AntiCorruptionLayer.CatalogBasket\ECommerce.AntiCorruptionLayer.CatalogBasket.csproj" />
       <ProjectReference Include="..\ECommerce.Catalog.Application\ECommerce.Catalog.Application.csproj" />
     </ItemGroup>
 
