@@ -5,7 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
+    <ItemGroup>
+        <Using Include="ECommerce.Share.Abstractions" />
+        <Using Include="ECommerce.Share.Abstractions.CQRS" />
+    </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\ECommerce.Basket\ECommerce.Basket.csproj" />
     </ItemGroup>
