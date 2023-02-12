@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Basket.Api", "Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Web.Framework", "Core\ECommerce.Web.Framework\ECommerce.Web.Framework.csproj", "{C90C5EE4-034D-4ADE-9D4E-69E8AD179AEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Catalog.Api", "Catalog\ECommerce.Catalog.Api\ECommerce.Catalog.Api.csproj", "{9D02025C-51F7-4DC4-9D14-4572F25D46F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,7 @@ Global
 		{93F30507-534C-4A9C-9004-043655A9E2D6} = {521FC60A-52ED-4DD3-878E-220FABC97EAB}
 		{586082D8-E5E0-4AA6-B354-E22870192713} = {B2686CCF-B637-4BB2-B8C6-72713052F3D6}
 		{C90C5EE4-034D-4ADE-9D4E-69E8AD179AEB} = {E6F400FA-041A-43EB-B91D-EB65494E1117}
+		{9D02025C-51F7-4DC4-9D14-4572F25D46F4} = {521FC60A-52ED-4DD3-878E-220FABC97EAB}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{09BBC679-DF3F-47D8-8787-DEFB65AD204B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -95,5 +98,9 @@ Global
 		{C90C5EE4-034D-4ADE-9D4E-69E8AD179AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C90C5EE4-034D-4ADE-9D4E-69E8AD179AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C90C5EE4-034D-4ADE-9D4E-69E8AD179AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D02025C-51F7-4DC4-9D14-4572F25D46F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D02025C-51F7-4DC4-9D14-4572F25D46F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D02025C-51F7-4DC4-9D14-4572F25D46F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D02025C-51F7-4DC4-9D14-4572F25D46F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
