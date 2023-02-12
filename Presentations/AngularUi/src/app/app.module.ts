@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AgGridModule} from 'ag-grid-angular';
 import {ProductListComponent} from "./features/product/pages/product-list/product-list.component";
 import {ButtonRendererComponent} from "./features/product/components/button-renderer.component";
+import {ProductDetailsComponent} from './features/product/pages/product-details/product-details.component';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import {ButtonRendererComponent} from "./features/product/components/button-rend
         ReactiveFormsModule,
         RouterModule.forRoot([
             {path: '', component: ProductListComponent},
+            {path: 'products/:productId', component: ProductDetailsComponent},
         ]),
         AgGridModule
     ],
@@ -23,7 +25,8 @@ import {ButtonRendererComponent} from "./features/product/components/button-rend
         AppComponent,
         TopBarComponent,
         ProductListComponent,
-        ButtonRendererComponent
+        ButtonRendererComponent,
+        ProductDetailsComponent
     ],
     bootstrap: [
         AppComponent
