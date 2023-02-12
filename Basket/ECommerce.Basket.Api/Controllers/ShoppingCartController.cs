@@ -47,7 +47,7 @@ public class ShoppingCartController : ControllerBase
         return Ok(response);
     }
 
-    [HttpDelete]
+    [HttpDelete("Clear")]
     public async Task<IActionResult> Clear()
     {
         var response = await _mediator.Send(ClearShoppingCartCommand.Default);
