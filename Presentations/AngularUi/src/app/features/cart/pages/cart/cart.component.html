@@ -1,0 +1,43 @@
+<h3>Cart</h3>
+
+<div class="cart-item" *ngFor="let item of items">
+    <span>{{ item.productOverview.name }}</span>
+    <button class="button" type="button" (click)="delete(item)">Delete</button>
+</div>
+
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">
+            Name
+        </label>
+        <input id="name" type="text" formControlName="name" />
+        <div *ngIf=" submitted &&  f['name'].errors" class="invalid-feedback">
+            <div *ngIf="f['name'].errors['required']">Name is required</div>
+        </div>
+    </div>
+    <div>
+        <label for="email">
+            email
+        </label>
+        <input id="email" type="text" formControlName="email"/>
+        <div *ngIf=" submitted &&  f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email is required</div>
+            <div *ngIf="f['email'].errors['email']">Email is not valid</div>
+        </div>
+
+    </div>
+    <div>
+        <label for="address">
+            Address
+        </label>
+        <input id="address" type="text" formControlName="address"/>
+        <div *ngIf="submitted &&   f['address'].errors" class="invalid-feedback">
+            <div *ngIf="f['address'].errors['required']">Address is required</div>
+        </div>
+    </div>
+
+    <button class="button" type="submit">Purchase</button>
+
+</form>

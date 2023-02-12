@@ -9,6 +9,7 @@ import {AgGridModule} from 'ag-grid-angular';
 import {ProductListComponent} from "./features/product/pages/product-list/product-list.component";
 import {ButtonRendererComponent} from "./features/product/components/button-renderer.component";
 import {ProductDetailsComponent} from './features/product/pages/product-details/product-details.component';
+import {CartComponent} from './features/cart/pages/cart/cart.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import {ProductDetailsComponent} from './features/product/pages/product-details/
         RouterModule.forRoot([
             {path: '', component: ProductListComponent},
             {path: 'products/:productId', component: ProductDetailsComponent},
+            {path: 'cart', component: CartComponent},
         ]),
         AgGridModule
     ],
@@ -26,7 +28,8 @@ import {ProductDetailsComponent} from './features/product/pages/product-details/
         TopBarComponent,
         ProductListComponent,
         ButtonRendererComponent,
-        ProductDetailsComponent
+        ProductDetailsComponent,
+        CartComponent
     ],
     bootstrap: [
         AppComponent

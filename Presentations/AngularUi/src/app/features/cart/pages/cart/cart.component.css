@@ -1,0 +1,7 @@
+.invalid-feedback {
+    margin-bottom: 15px;
+}
+
+.invalid-feedback div {
+    color: red;
+}
