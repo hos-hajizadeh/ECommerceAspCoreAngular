@@ -1,0 +1,26 @@
+<h2>Products</h2>
+
+<h3>Grid Mode:</h3>
+<ag-grid-angular [frameworkComponents]="frameworkComponents"
+                 style="width: 820px; height: 120px"
+                 class="ag-theme-balham"
+                 [rowData]="rowData"
+                 [columnDefs]="columnDefs"
+                 [defaultColDef]="defaultColDef">
+</ag-grid-angular>
+
+<h3>Cart Mode:</h3>
+
+<div *ngFor="let product of products" class="product-item">
+    <a [title]="product.name + ' details'"
+       [routerLink]="['/products', product.id]">
+        <h3>
+
+            {{ product.name }}
+        </h3>
+
+        <p *ngIf="product.description">
+            Description: {{ product.description }}
+        </p>
+    </a>
+</div>
