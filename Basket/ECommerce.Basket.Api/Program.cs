@@ -1,6 +1,10 @@
+using ECommerce.Basket.Api.Controllers;
 using ECommerce.Basket.Application;
 using ECommerce.Basket.Data;
 using ECommerce.Catalog.Data;
+using ECommerce.Web.Framework;
+using ECommerce.Web.Framework.Mvc.Filters;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -10,7 +14,11 @@ builder.Services.AddCors();
 
 builder.Services.AddBasketDataServices(builder.Configuration)
     .AddBasketApplicationServices(builder.Configuration)
-    .AddCatalogDataServices(builder.Configuration);
+    .AddCatalogDataServices(builder.Configuration)
+    .AddWebFrameworkServices(builder.Configuration);
+
+builder.Services.AddValidatorsFromAssemblyContaining<ShoppingCartController>();
+builder.Services.AddScoped<ValidationFilter>();
 
 //App
 var app = builder.Build();
