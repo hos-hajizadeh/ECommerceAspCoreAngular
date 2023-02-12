@@ -1,3 +1,5 @@
+using ECommerce.AntiCorruptionLayer.CatalogBasket;
+using ECommerce.Catalog.Data.AntiCorruptions;
 using ECommerce.Catalog.Data.Persistence.DbContexts;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +16,7 @@ namespace ECommerce.Catalog.Data
             services.AddDbContext<CatalogContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionString")));
 
+            services.AddTransient<ICatalogBasketACL, CatalogBasketACL>();
             services.AddMediatR(typeof(DependencyInjectionExtensions));
 
             return services;
