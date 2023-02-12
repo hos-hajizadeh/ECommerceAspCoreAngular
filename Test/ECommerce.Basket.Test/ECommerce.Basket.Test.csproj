@@ -36,6 +36,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Basket\ECommerce.Basket.Data\ECommerce.Basket.Data.csproj" />
       <ProjectReference Include="..\..\Basket\ECommerce.Basket\ECommerce.Basket.csproj" />
+      <ProjectReference Include="..\..\Catalog\ECommerce.Catalog.Data\ECommerce.Catalog.Data.csproj" />
     </ItemGroup>
 
 </Project>
