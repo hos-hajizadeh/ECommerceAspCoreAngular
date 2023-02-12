@@ -27,6 +27,7 @@ namespace ECommerce.Basket.Test.Applications
             var services = new ServiceCollection();
             services.AddEntityFrameworkInMemoryDatabase();
             services.AddMediatR(typeof(Application.DependencyInjectionExtensions));
+            services.AddMediatR(typeof(Basket.Data.DependencyInjectionExtensions));
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddSingleton(_mockWorkContext.Object);
 
