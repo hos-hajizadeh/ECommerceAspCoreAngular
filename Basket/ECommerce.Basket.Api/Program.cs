@@ -1,10 +1,12 @@
 using ECommerce.Basket.Api.Controllers;
 using ECommerce.Basket.Application;
 using ECommerce.Basket.Data;
+using ECommerce.Basket.Data.Persistence.DbContexts;
 using ECommerce.Catalog.Data;
 using ECommerce.Web.Framework;
 using ECommerce.Web.Framework.Mvc.Filters;
 using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -22,6 +24,7 @@ builder.Services.AddScoped<ValidationFilter>();
 
 //App
 var app = builder.Build();
+MigrateDb(app);
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -38,3 +41,16 @@ app.UseCors(i =>
     i.AllowAnyMethod();
 });
 app.Run();
+
+void MigrateDb(WebApplication webApplication)
+{
+    var context = ((IApplicationBuilder)webApplication).ApplicationServices.GetService<BasketContext>();
+    try
+    {
+        context.Database.Migrate();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+    } 
+}
