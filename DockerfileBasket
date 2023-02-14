@@ -1,0 +1,28 @@
+﻿FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+COPY ["Basket/ECommerce.Basket.Api/ECommerce.Basket.Api.csproj", "Basket/ECommerce.Basket.Api/"]
+COPY ["Basket/ECommerce.Basket.Data/ECommerce.Basket.Data.csproj", "Basket/ECommerce.Basket.Data/"]
+COPY ["Catalog/ECommerce.AntiCorruptionLayer.CatalogBasket/ECommerce.AntiCorruptionLayer.CatalogBasket.csproj", "Catalog/ECommerce.AntiCorruptionLayer.CatalogBasket/"]
+COPY ["Basket/ECommerce.Basket.Application/ECommerce.Basket.Application.csproj", "Basket/ECommerce.Basket.Application/"]
+COPY ["Basket/ECommerce.Basket/ECommerce.Basket.csproj", "Basket/ECommerce.Basket/"]
+COPY ["Core/ECommerce.Share/ECommerce.Share.csproj", "Core/ECommerce.Share/"]
+COPY ["Catalog/ECommerce.Catalog.Data/ECommerce.Catalog.Data.csproj", "Catalog/ECommerce.Catalog.Data/"]
+COPY ["Catalog/ECommerce.Catalog.Application/ECommerce.Catalog.Application.csproj", "Catalog/ECommerce.Catalog.Application/"]
+COPY ["Core/ECommerce.Web.Framework/ECommerce.Web.Framework.csproj", "Core/ECommerce.Web.Framework/"]
+RUN dotnet restore "Basket/ECommerce.Basket.Api/ECommerce.Basket.Api.csproj"
+COPY . .
+WORKDIR "/src/Basket/ECommerce.Basket.Api"
+RUN dotnet build "ECommerce.Basket.Api.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "ECommerce.Basket.Api.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "ECommerce.Basket.Api.dll"]
