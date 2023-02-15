@@ -59,7 +59,7 @@ void MigrateDb(WebApplication webApplication)
         new()
         {
             Name = "Product A",
-            Price = new Money()
+            Price = new Money
             {
                 Amount = 100,
                 Currency = "USD"
@@ -69,7 +69,7 @@ void MigrateDb(WebApplication webApplication)
         new()
         {
             Name = "Product B",
-            Price = new Money()
+            Price = new Money
             {
                 Amount = 150,
                 Currency = "USD"
@@ -79,7 +79,7 @@ void MigrateDb(WebApplication webApplication)
         new()
         {
             Name = "Product C",
-            Price = new Money()
+            Price = new Money
             {
                 Amount = 200,
                 Currency = "USD"

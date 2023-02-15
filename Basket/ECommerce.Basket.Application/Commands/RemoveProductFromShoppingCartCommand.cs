@@ -8,8 +8,8 @@ public class RemoveProductFromShoppingCartCommand : ICommand<bool>
 
     public class Handler : ICommandHandler<RemoveProductFromShoppingCartCommand, bool>
     {
-        private readonly IWorkContext _workContext;
         private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IWorkContext _workContext;
 
         public Handler(IWorkContext workContext, IShoppingCartRepository shoppingCartRepository)
         {

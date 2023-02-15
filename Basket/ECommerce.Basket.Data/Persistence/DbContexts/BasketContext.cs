@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Basket.Data.Persistence.DbContexts;
 
-public partial class BasketContext : DbContext
+public class BasketContext : DbContext
 {
     public BasketContext()
     {
@@ -18,6 +18,8 @@ public partial class BasketContext : DbContext
     public virtual DbSet<ShoppingCartItemEntity> ShoppingCartItems { get; set; }
     public virtual DbSet<ShoppingCartEntity> ShoppingCarts { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) =>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(BasketContext).Assembly);
+    }
 }

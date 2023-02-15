@@ -1,6 +1,5 @@
-namespace ECommerce.Share.Abstractions
+namespace ECommerce.Share.Abstractions;
+
+public interface IDbEntity
 {
-    public interface IDbEntity
-    {
-    }
 }

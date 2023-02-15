@@ -7,7 +7,7 @@ public class AddProductToShoppingCartTest : BaseHandlersTestFixture
     [Fact]
     public async void Given_ValidData_Then_SuccessfullyInsertShoppingCart()
     {
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity
@@ -21,13 +21,13 @@ public class AddProductToShoppingCartTest : BaseHandlersTestFixture
     [Fact]
     public async void Given_ValidData_When_WithExistShoppingCart_Then_SuccessfullyUpdateShoppingCart()
     {
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity
         });
 
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity
@@ -37,6 +37,4 @@ public class AddProductToShoppingCartTest : BaseHandlersTestFixture
         Assert.NotNull(shoppingCart);
         Assert.Equal(Quantity * 2, shoppingCart.GetProductQuantity(ProductId));
     }
-    
-    
 }

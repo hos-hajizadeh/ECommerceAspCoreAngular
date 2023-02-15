@@ -22,7 +22,7 @@ public class ShoppingCartRepositoryTest : BaseEfRepoTestFixture
         var shoppingCartRepository = new ShoppingCartRepository(_dbContext);
         var cart = new ShoppingCart(UserId);
         cart.Add(ProductId, Quantity);
-        
+
         await shoppingCartRepository.PutAsync(cart);
         var shoppingCart = await shoppingCartRepository.FindByUserIdOrDefaultAsync(UserId);
 

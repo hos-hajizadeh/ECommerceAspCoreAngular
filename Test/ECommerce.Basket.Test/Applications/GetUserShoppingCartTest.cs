@@ -8,7 +8,7 @@ public class GetUserShoppingCartTest : BaseHandlersTestFixture
     [Fact]
     public async void Given_ValidData_Then_SuccessfullyInsertShoppingCart_Then_GetUserShoppingCart()
     {
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity

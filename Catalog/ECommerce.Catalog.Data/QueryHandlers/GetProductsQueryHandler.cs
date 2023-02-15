@@ -17,7 +17,7 @@ public class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, List<Prod
 
     public async Task<List<ProductOverviewDto>> Handle(GetProductsQuery request, CancellationToken cancellationToken)
     {
-        var productEntities = await _catalogContext.Products.ToListAsync(cancellationToken: cancellationToken);
+        var productEntities = await _catalogContext.Products.ToListAsync(cancellationToken);
         var productOverviewDtos = productEntities.Select(i => new ProductOverviewDto
         {
             Id = i.Id,

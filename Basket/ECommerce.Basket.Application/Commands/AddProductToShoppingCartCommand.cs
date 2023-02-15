@@ -1,6 +1,4 @@
 using ECommerce.Basket.Repositories;
-using ECommerce.Share.Abstractions;
-using ECommerce.Share.Abstractions.CQRS;
 
 namespace ECommerce.Basket.Application.Commands;
 
@@ -11,8 +9,8 @@ public class AddProductToShoppingCartCommand : ICommand<bool>
 
     public class Handler : ICommandHandler<AddProductToShoppingCartCommand, bool>
     {
-        private readonly IWorkContext _workContext;
         private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IWorkContext _workContext;
 
         public Handler(IWorkContext workContext, IShoppingCartRepository shoppingCartRepository)
         {

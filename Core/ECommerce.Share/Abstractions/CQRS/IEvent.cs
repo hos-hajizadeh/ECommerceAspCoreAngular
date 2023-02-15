@@ -1,5 +1,5 @@
 namespace ECommerce.Share.Abstractions.CQRS;
 
-public interface IEvent : MediatR.INotification
+public interface IEvent : INotification
 {
 }

@@ -7,7 +7,7 @@ public class ClearShoppingCartTest : BaseHandlersTestFixture
     [Fact]
     public async void Given_ValidData_Then_SuccessfullyClearShoppingCart()
     {
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity

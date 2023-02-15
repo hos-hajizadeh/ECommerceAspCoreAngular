@@ -22,7 +22,7 @@ public class ShoppingCartTest
         var productQuantity = shoppingCart.GetProductQuantity(ProductId);
         Assert.Equal(Quantity, productQuantity);
 
-        shoppingCart.Add(ProductId, 1);
+        shoppingCart.Add(ProductId);
         productQuantity = shoppingCart.GetProductQuantity(ProductId);
         Assert.Equal(Quantity + 1, productQuantity);
     }

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Catalog.Data.Persistence.DbContexts;
 
-public partial class CatalogContext : DbContext
+public class CatalogContext : DbContext
 {
     public CatalogContext()
     {
@@ -17,6 +17,8 @@ public partial class CatalogContext : DbContext
 
     public virtual DbSet<ProductEntity> Products { get; set; }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) =>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogContext).Assembly);
+    }
 }

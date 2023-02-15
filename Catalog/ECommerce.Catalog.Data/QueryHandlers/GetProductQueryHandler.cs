@@ -18,7 +18,7 @@ public class GetProductQueryHandler : IQueryHandler<GetProductQuery, ProductOver
     public async Task<ProductOverviewDto> Handle(GetProductQuery request, CancellationToken cancellationToken)
     {
         var productEntity = await _catalogContext.Products.FirstOrDefaultAsync(i => i.Id == request.Id,
-            cancellationToken: cancellationToken);
+            cancellationToken);
 
         Guard.IsNotNull(productEntity);
 

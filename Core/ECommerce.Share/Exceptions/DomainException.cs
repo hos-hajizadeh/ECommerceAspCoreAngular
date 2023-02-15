@@ -1,17 +1,16 @@
-namespace ECommerce.Share.Exceptions
+namespace ECommerce.Share.Exceptions;
+
+public class DomainException : ApplicationException
 {
-    public class DomainException : ApplicationException
+    public DomainException()
     {
-        public DomainException()
-        {
-        }
+    }
 
-        public DomainException(string message) : base(message)
-        {
-        }
+    public DomainException(string message) : base(message)
+    {
+    }
 
-        public DomainException(string message, Exception innerException) : base(message, innerException)
-        {
-        }
+    public DomainException(string message, Exception innerException) : base(message, innerException)
+    {
     }
 }

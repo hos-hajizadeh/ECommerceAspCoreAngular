@@ -5,7 +5,7 @@ using ECommerce.Catalog.Exceptions;
 
 namespace ECommerce.Catalog;
 
-public record Currency(string Code, string Name, string PluralName, char Symbol)  
+public record Currency(string Code, string Name, string PluralName, char Symbol)
 {
     public static readonly Currency EUR = new("EUR", "Euro", "Euros", '€');
 
@@ -17,9 +17,15 @@ public record Currency(string Code, string Name, string PluralName, char Symbol)
         new ReadOnlyDictionary<string, Currency>((from c in new[] { EUR, GBP, USD } select (c.Code, c))
             .ToDictionary(tup => tup.Code, tup => tup.c));
 
-    public static IReadOnlyList<Currency> GetAll() => Lookup.Values.OrderBy(c => c.Code).ToList();
+    public static IReadOnlyList<Currency> GetAll()
+    {
+        return Lookup.Values.OrderBy(c => c.Code).ToList();
+    }
 
-    public static Currency GetDefaultCurrency() => USD;
+    public static Currency GetDefaultCurrency()
+    {
+        return USD;
+    }
 
     public static Currency GetByCode(string code)
     {
@@ -33,7 +39,7 @@ public record Currency(string Code, string Name, string PluralName, char Symbol)
         }
         catch (ArgumentNullException)
         {
-            throw new CurrencyException($"Currency code cannot be null.");
+            throw new CurrencyException("Currency code cannot be null.");
         }
     }
 }

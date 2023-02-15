@@ -1,4 +1,5 @@
 ﻿using ECommerce.AntiCorruptionLayer.CatalogBasket;
+using ECommerce.Basket.Application;
 using ECommerce.Basket.Data.Persistence.DbContexts;
 using ECommerce.Basket.Data.Repositories;
 using ECommerce.Basket.Repositories;
@@ -11,93 +12,92 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 
-namespace ECommerce.Basket.Test.Applications
+namespace ECommerce.Basket.Test.Applications;
+
+public abstract class BaseHandlersTestFixture
 {
-    public abstract class BaseHandlersTestFixture
+    protected const int UserId = 10;
+    protected const long ProductId = 3;
+    protected const int Quantity = 2;
+    protected IMediator _mediator;
+
+    protected Mock<IWorkContext> _mockWorkContext = new();
+    protected ServiceProvider _serviceProvider;
+    protected IShoppingCartRepository _shoppingCartRepository;
+
+    protected BaseHandlersTestFixture()
     {
-        protected const int UserId = 10;
-        protected const long ProductId = 3;
-        protected const int Quantity = 2;
+        _mockWorkContext.Setup(x => x.GetCurrentUserId()).Returns(UserId);
 
-        protected Mock<IWorkContext> _mockWorkContext = new();
-        protected IMediator _mediator;
-        protected ServiceProvider _serviceProvider;
-        protected IShoppingCartRepository _shoppingCartRepository;
+        var services = new ServiceCollection();
+        services.AddEntityFrameworkInMemoryDatabase();
+        services.AddMediatR(typeof(DependencyInjectionExtensions));
+        services.AddMediatR(typeof(Basket.Data.DependencyInjectionExtensions));
+        services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
+        services.AddScoped<ICatalogBasketACL, CatalogBasketACL>();
 
-        protected BaseHandlersTestFixture()
+        services.AddSingleton(_mockWorkContext.Object);
+
+        services.AddDbContext<BasketContext>((sp, options) =>
         {
-            _mockWorkContext.Setup(x => x.GetCurrentUserId()).Returns(UserId);
+            options.UseInMemoryDatabase("BasketContext").UseInternalServiceProvider(sp);
+        });
 
-            var services = new ServiceCollection();
-            services.AddEntityFrameworkInMemoryDatabase();
-            services.AddMediatR(typeof(Application.DependencyInjectionExtensions));
-            services.AddMediatR(typeof(Basket.Data.DependencyInjectionExtensions));
-            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
-            services.AddScoped<ICatalogBasketACL, CatalogBasketACL>();
-
-            services.AddSingleton(_mockWorkContext.Object);
-
-            services.AddDbContext<BasketContext>((sp, options) =>
-            {
-                options.UseInMemoryDatabase("BasketContext").UseInternalServiceProvider(sp);
-            });
-
-            services.AddDbContext<CatalogContext>((sp, options) =>
-            {
-                options.UseInMemoryDatabase("CatalogContext").UseInternalServiceProvider(sp);
-            });
-
-            _serviceProvider = services.BuildServiceProvider();
-
-            _mediator = _serviceProvider.GetService<IMediator>()!;
-            _shoppingCartRepository = _serviceProvider.GetService<IShoppingCartRepository>()!;
-
-            SeedCatalogContext();
-        }
-
-        private void SeedCatalogContext()
+        services.AddDbContext<CatalogContext>((sp, options) =>
         {
-            var catalogContext = _serviceProvider.GetService<CatalogContext>()!;
+            options.UseInMemoryDatabase("CatalogContext").UseInternalServiceProvider(sp);
+        });
 
-            var productEntities = new List<ProductEntity>
+        _serviceProvider = services.BuildServiceProvider();
+
+        _mediator = _serviceProvider.GetService<IMediator>()!;
+        _shoppingCartRepository = _serviceProvider.GetService<IShoppingCartRepository>()!;
+
+        SeedCatalogContext();
+    }
+
+    private void SeedCatalogContext()
+    {
+        var catalogContext = _serviceProvider.GetService<CatalogContext>()!;
+
+        var productEntities = new List<ProductEntity>
+        {
+            new()
             {
-                new()
+                Id = 1,
+                Name = "Product A",
+                Price = new Money
                 {
-                    Id = 1,
-                    Name = "Product A",
-                    Price = new Money()
-                    {
-                        Amount = 100,
-                        Currency = "USD"
-                    },
-                    Description = "Product A ........."
+                    Amount = 100,
+                    Currency = "USD"
                 },
-                new()
+                Description = "Product A ........."
+            },
+            new()
+            {
+                Id = 2,
+                Name = "Product B",
+                Price = new Money
                 {
-                    Id = 2,
-                    Name = "Product B",
-                    Price = new Money()
-                    {
-                        Amount = 150,
-                        Currency = "USD"
-                    },
-                    Description = "Product B ........."
+                    Amount = 150,
+                    Currency = "USD"
                 },
-                new()
+                Description = "Product B ........."
+            },
+            new()
+            {
+                Id = 3,
+                Name = "Product C",
+                Price = new Money
                 {
-                    Id = 3,
-                    Name = "Product C",
-                    Price = new Money()
-                    {
-                        Amount = 200,
-                        Currency = "USD"
-                    },
-                    Description = "Product C ........."
-                }
-            };
+                    Amount = 200,
+                    Currency = "USD"
+                },
+                Description = "Product C ........."
+            }
+        };
 
-            catalogContext.Products.AddRange(productEntities);
-            catalogContext.SaveChanges();
-        }
+        catalogContext.Products.AddRange(productEntities);
+        catalogContext.SaveChanges();
     }
 }

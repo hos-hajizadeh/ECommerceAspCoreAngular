@@ -4,8 +4,8 @@ namespace ECommerce.Basket;
 
 public class ShoppingCart : ISnapshot<ShoppingCartSnapshot>
 {
-    private readonly long _userId;
     private readonly HashSet<ShoppingCartItem> _items = new();
+    private readonly long _userId;
 
     public ShoppingCart(long userId)
     {
@@ -16,7 +16,9 @@ public class ShoppingCart : ISnapshot<ShoppingCartSnapshot>
     {
         var existsItem = _items.FirstOrDefault(c => c.IsEqualsProduct(productId));
         if (existsItem != null)
+        {
             existsItem.IncreaseQuantity(quantity);
+        }
         else
         {
             var item = new ShoppingCartItem(productId, quantity);

@@ -7,14 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Core\ECommerce.Web.Framework\ECommerce.Web.Framework.csproj" />
-      <ProjectReference Include="..\ECommerce.Catalog.Application\ECommerce.Catalog.Application.csproj" />
-      <ProjectReference Include="..\ECommerce.Catalog.Data\ECommerce.Catalog.Data.csproj" />
+        <ProjectReference Include="..\..\Core\ECommerce.Web.Framework\ECommerce.Web.Framework.csproj"/>
+        <ProjectReference Include="..\ECommerce.Catalog.Application\ECommerce.Catalog.Application.csproj"/>
+        <ProjectReference Include="..\ECommerce.Catalog.Data\ECommerce.Catalog.Data.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -2,25 +2,24 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ECommerce.Basket.Test.Data
+namespace ECommerce.Basket.Test.Data;
+
+public abstract class BaseEfRepoTestFixture
 {
-    public abstract class BaseEfRepoTestFixture
+    protected BasketContext _dbContext;
+
+    protected BaseEfRepoTestFixture()
     {
-        protected BasketContext _dbContext;
+        var collection = new ServiceCollection();
+        collection.AddEntityFrameworkInMemoryDatabase();
 
-        protected BaseEfRepoTestFixture()
+        collection.AddDbContext<BasketContext>((sp, options) =>
         {
-            var collection = new ServiceCollection();
-            collection.AddEntityFrameworkInMemoryDatabase();
+            options.UseInMemoryDatabase("TestDb").UseInternalServiceProvider(sp);
+        });
 
-            collection.AddDbContext<BasketContext>((sp, options) =>
-            {
-                options.UseInMemoryDatabase("TestDb").UseInternalServiceProvider(sp);
-            });
+        var serviceProvider = collection.BuildServiceProvider();
 
-            var serviceProvider =collection .BuildServiceProvider();
-
-            _dbContext = serviceProvider.GetService<BasketContext>()!;
-        }
+        _dbContext = serviceProvider.GetService<BasketContext>()!;
     }
 }

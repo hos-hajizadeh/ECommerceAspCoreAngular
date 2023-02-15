@@ -7,7 +7,7 @@ public class RemoveProductFromShoppingCartTest : BaseHandlersTestFixture
     [Fact]
     public async void Given_ValidData_Then_SuccessfullyRemoveProductFromShoppingCart()
     {
-        await _mediator.Send(new AddProductToShoppingCartCommand()
+        await _mediator.Send(new AddProductToShoppingCartCommand
         {
             ProductId = ProductId,
             Quantity = Quantity
@@ -17,9 +17,9 @@ public class RemoveProductFromShoppingCartTest : BaseHandlersTestFixture
         Assert.NotNull(shoppingCart);
         Assert.Equal(Quantity, shoppingCart.GetProductQuantity(ProductId));
 
-        await _mediator.Send(new RemoveProductFromShoppingCartCommand()
+        await _mediator.Send(new RemoveProductFromShoppingCartCommand
         {
-            ProductId = ProductId,
+            ProductId = ProductId
         });
 
         shoppingCart = await _shoppingCartRepository.FindByUserIdOrDefaultAsync(UserId);

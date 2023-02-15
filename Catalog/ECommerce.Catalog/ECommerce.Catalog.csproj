@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Core\ECommerce.Share\ECommerce.Share.csproj" />
+        <ProjectReference Include="..\..\Core\ECommerce.Share\ECommerce.Share.csproj"/>
     </ItemGroup>
 
 </Project>

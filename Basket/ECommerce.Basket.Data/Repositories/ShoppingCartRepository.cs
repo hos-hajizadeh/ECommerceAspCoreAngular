@@ -23,7 +23,7 @@ public class ShoppingCartRepository : IShoppingCartRepository
         var shoppingCartEntity = new ShoppingCartEntity
         {
             UserId = snapshot.UserId,
-            Items = snapshot.Items.Select(i => new ShoppingCartItemEntity()
+            Items = snapshot.Items.Select(i => new ShoppingCartItemEntity
             {
                 ProductId = i.ProductId,
                 Quantity = i.Quantity
@@ -61,6 +61,6 @@ public class ShoppingCartRepository : IShoppingCartRepository
         _basketContext.Remove(shoppingCartEntity);
         await _basketContext.SaveChangesAsync();
 
-        return true; 
+        return true;
     }
 }

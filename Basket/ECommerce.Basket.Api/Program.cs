@@ -52,5 +52,5 @@ void MigrateDb(WebApplication webApplication)
     catch (Exception e)
     {
         Console.WriteLine(e);
-    } 
+    }
 }

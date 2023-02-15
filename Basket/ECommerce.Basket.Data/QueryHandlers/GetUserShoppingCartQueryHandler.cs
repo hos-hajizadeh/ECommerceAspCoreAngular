@@ -12,9 +12,9 @@ namespace ECommerce.Basket.Data.QueryHandlers;
 
 public class GetUserShoppingCartQueryHandler : IQueryHandler<GetUserShoppingCartQuery, UserShoppingCartDto>
 {
-    private readonly IWorkContext _workContext;
     private readonly BasketContext _basketContext;
     private readonly ICatalogBasketACL _catalogBasketACL;
+    private readonly IWorkContext _workContext;
 
     public GetUserShoppingCartQueryHandler(IWorkContext workContext, BasketContext basketContext,
         ICatalogBasketACL catalogBasketACL)
@@ -29,7 +29,7 @@ public class GetUserShoppingCartQueryHandler : IQueryHandler<GetUserShoppingCart
         var userId = _workContext.GetCurrentUserId();
         var card = await _basketContext.ShoppingCarts
             .Include(i => i.Items)
-            .FirstOrDefaultAsync(i => i.UserId == userId, cancellationToken: cancellationToken);
+            .FirstOrDefaultAsync(i => i.UserId == userId, cancellationToken);
 
         if (card == null)
             return new UserShoppingCartDto();
